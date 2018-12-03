@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "nodemon server/index.js"
   },
-  "author": "Beth Johnson",
+  "author": "Katie Hoesley",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -23,7 +24,7 @@
     "jquery": "^3.1.1",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
-    "react": "^15.4.2",
+    "react": "^15.6.2",
     "react-dom": "^15.4.2"
   }
 }
