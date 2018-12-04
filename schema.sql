@@ -1,13 +1,13 @@
-DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS books;
 
-CREATE DATABASE test;
+CREATE DATABASE books;
 
-USE test;
+USE books;
 
-CREATE TABLE items (
+CREATE TABLE book (
   id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
+  title TEXT,
+  pageNum int,
   PRIMARY KEY (ID)
 );
 

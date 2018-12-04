@@ -1,28 +1,34 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({ 
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'books',
+});
 
 var app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(bodyParser.json())
 
-// UNCOMMENT FOR ANGULAR
-// app.use(express.static(__dirname + '/../angular-client'));
-// app.use(express.static(__dirname + '/../node_modules'));
-
-app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
+app.post('/books', (req, res) => {
+  console.log(req)
+  let queryString = `SELECT pageNum FROM book WHERE title = '${req.body.title}'`
+  let key = req.body.title;
+  connection.query(queryString, key, (err, data) => {
     if(err) {
-      res.sendStatus(500);
+      console.log(err); 
     } else {
-      res.json(data);
+      res.send(JSON.stringify(data))
     }
-  });
+  })
 });
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
 });
 
+// connection.end();

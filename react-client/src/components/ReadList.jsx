@@ -2,13 +2,16 @@ import React from 'react';
 
 function ReadList(props) {
     const readList = props.books.map((book) => {
-        <li>{book}</li>
-    }); 
-    
+        return <li>{book}</li>
+    });
+    console.log(props);
+    console.log(readList);
     return(
         <div className='previous'>
-        Previously Read in {(new Date()).getFullYear()}:
-        <ul>{readList}</ul>
+            <div className='words'>
+                 Previously Read in {(new Date()).getFullYear()}:
+            </div>
+            <ul className='list'>{readList}</ul>
         </div>
     )
 }
