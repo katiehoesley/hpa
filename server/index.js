@@ -9,22 +9,41 @@ var connection = mysql.createConnection({
   database : 'books',
 });
 
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected!');
+});
+
 var app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json())
 
-app.post('/books', (req, res) => {
-  console.log(req)
-  let queryString = `SELECT pageNum FROM book WHERE title = '${req.body.title}'`
-  let key = req.body.title;
-  connection.query(queryString, key, (err, data) => {
+app.get('/books', (req, res) => {
+  let queryString = `SELECT * FROM book`
+  connection.query(queryString, (err, data) => {
     if(err) {
       console.log(err); 
     } else {
-      res.send(JSON.stringify(data))
+      res.send(data)
     }
-  })
+  })  
+})
+
+app.post('/books', (req, res) => {
+  // let key = req.body.title;
+  // let queryString = 'SELECT `pageNum` FROM `book` WHERE `title` = ?'
+  connection.query({
+    sql: `SELECT pageNum FROM book WHERE title = '?'`,
+    values: req.body.title
+  }, function(error, results) {
+      if(error) {
+        console.log(error); 
+      } else {
+        console.log(results);
+        res.send(results)
+      }
+    })
 });
 
 app.listen(3000, function() {

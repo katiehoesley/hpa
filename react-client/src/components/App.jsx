@@ -2,7 +2,6 @@ import React from 'react';
 import Search from './Search.jsx';
 import ReadList from './ReadList.jsx';
 import Preferences from './Preferences.jsx';
-// import Calendar from './Calendar.jsx'
 //api key for google books: AIzaSyALTwiKEYt0U-s7CJ_EPQ9H1izosAfn6L0
 
 class App extends React.Component {
@@ -11,10 +10,10 @@ class App extends React.Component {
     this.state = { 
       previous: ['To Kill A Mockingbird', 'Girl With The Dragon Tattoo', 'Sapiens', 'This Was A Call'],
       title: '____', 
-      pageNum: 0,
+      pageNum: '',
       daysToRead: 0,
       pagesPerNight: 100,
-      startDate: '____',
+      startDate: '____'
     }
   }
 
@@ -26,20 +25,21 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault(); 
+
+    var data = this.state.title;
     fetch('/books', {
       method: 'POST',
       body: { title: this.state.title }
     })
       .then(response => {
-        console.log(response.body.toString())
+        console.log(response)
         response.json()
-        // console.log(response.body)
       })
       .then((data) => 
         this.setState({
-        pageNum: 457
+        pageNum: (Math.floor(Math.random() * 631) + 421)
         }))
-      event.preventDefault(); 
   }
 
   handleSelect(event) {
