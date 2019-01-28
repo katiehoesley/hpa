@@ -3,9 +3,11 @@ const express = require('express');
 const app = express(); 
 var bodyParser = require('body-parser'); 
 
+
 const PORT = process.env.PORT || 3000;
 
 global.bodyParser = require('body-parser');
+
 
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -17,8 +19,8 @@ app.use(bodyParser.json({
   parameterLimit: 100000
 }))
 
-app.use(express.json()); // Parses request body if type is json. Saves to req.body.
 
+app.use(express.json()); 
 
 mongoose.connect(`mongodb://localhost:27017/hp-assessment`)
 
@@ -30,14 +32,6 @@ const userSchema = new mongoose.Schema( {
 
 const User = mongoose.model('User', userSchema)
 
-// get em all back
-const getUsernames = function() {
-  const query = User.find({ });
-  return query.exec();
-};
-
-
-//routing 
 
 app.post('/users', (req, res) => {
   var newGuy = new User(req.body)
@@ -62,10 +56,8 @@ app.get('/users', (req, res) => {
 });
 
 
-
-//static html
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.listen(PORT, function() {
-  console.log('listening on port 3000!');
+  console.log(`listening on port  ${PORT}!`);
 });
