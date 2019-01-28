@@ -24,7 +24,7 @@ app.use(bodyParser.json({
 
 app.use(express.json()); 
 
-mongoose.connect(dataURL)
+mongo.connect(dataURL)
 
 const userSchema = new mongoose.Schema( {
   username: String
