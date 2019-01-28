@@ -1,4 +1,4 @@
-const mongoose = require("mongoose"); 
+// const mongoose = require("mongoose"); 
 const express = require('express');
 const app = express(); 
 var bodyParser = require('body-parser'); 
@@ -22,15 +22,15 @@ app.use(bodyParser.json({
 
 app.use(express.json()); 
 
-mongoose.connect(`mongodb://localhost:27017/hp-assessment`)
+// // mongoose.connect(`mongodb://localhost:27017/hp-assessment`)
 
 
-const userSchema = new mongoose.Schema( {
-  username: String
-}, { collection: 'usernames' })
+// const userSchema = new mongoose.Schema( {
+//   username: String
+// }, { collection: 'usernames' })
 
 
-const User = mongoose.model('User', userSchema)
+// const User = mongoose.model('User', userSchema)
 
 
 app.post('/users', (req, res) => {
