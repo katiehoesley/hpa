@@ -1,0 +1,161 @@
+.single-product {
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    display: grid;
+    grid-gap: 15px 10px;
+    border: .5px lightgrey solid;
+    padding: 3%;
+    align-content: center;
+    justify-content: space-evenly;
+  }
+
+.productDetails {
+    line-height: 0px;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    list-style-type: none;
+    text-align: left;
+    border: .5px lightgrey solid;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    line-height: inherit;
+    padding: 3%;
+    font-size: 10px;
+}
+
+.productDetails:hover {
+    box-shadow: lightgrey
+}
+
+div#logged-in-users {
+    font-size: 10px;
+    margin-top: 1%;
+    font-weight: 100;
+    line-height: 15px;
+}
+
+.title {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.description .seller .productid .time { 
+    font-size: 5px;
+    margin-top: 3px;
+    font-weight: 100;
+    color: #666;
+    line-height: 7.5px;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+
+
+#price {
+    margin-top: 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 500;
+}
+
+.full-page {
+    display: grid;
+    paddinG: 1%; 
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-column-gap: 2%;
+    grid-row-gap: 2%;
+  }
+
+  .login-form {
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    padding: 8%;
+    align-content: center;
+    position: absolute;
+    width: 309px;
+    height: 42px;
+    top: 43%;
+    left: 43%;
+    margin: -100px 0 0 -200px;
+    background: #0096d6;
+    color: white;
+    border-radius: 100px;
+  }
+
+  .login-form.input {
+      width: 100%
+  }
+
+  #next {
+    margin-left: 0%;
+    border-radius: 100px;
+    color: #0096d6;
+  }
+
+  #last {
+    margin-left: 0%;
+    border-radius: 100px;
+    color: #0096d6;
+  }
+
+  div#top {
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.bottom-nav {
+    margin-top: 10%;
+    margin-bottom: 0px;
+    width: 100%;
+    position: sticky;
+    background: lightgrey;
+    padding: 1%;
+}
+
+.welcome-bar {
+    background: #0096d6;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+    color: white;
+    padding: 2%
+}
+
+button#see-all{
+    margin-left: 0%;
+    border-radius: 100px;
+    color: #0096d6;
+}
+
+#sort{
+    margin-left: 0%;
+    border-radius: 100px;
+    color: #4b3f96;
+    padding: 3px;
+    font-size: 8px;
+    width: 40px;
+    height: 17px;
+}
+
+form#sort-by {
+    color: white;
+    background: lightgrey;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    padding: 1%;
+    font-size: 10px;
+}
+
+#select {
+    background: white;
+    color: #4b3f96;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    font-size: 8px;
+    margin: 1px;
+    padding: -33%;
+}
+
