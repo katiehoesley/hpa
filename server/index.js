@@ -3,6 +3,7 @@ const express = require('express');
 const app = express(); 
 var bodyParser = require('body-parser'); 
 
+const PORT = process.env.PORT || 3000;
 
 global.bodyParser = require('body-parser');
 
@@ -65,6 +66,6 @@ app.get('/users', (req, res) => {
 //static html
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log('listening on port 3000!');
 });
