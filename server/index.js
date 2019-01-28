@@ -1,15 +1,14 @@
-// const mongoose = require("mongoose"); 
+const mongoose = require("mongoose"); 
 const express = require('express');
 const app = express(); 
 var bodyParser = require('body-parser'); 
-var mongo = require("mongodb").MongoClient; 
 
-var dataURL = process.env.MONGO_URI
 
 const PORT = process.env.PORT || 3000;
 
 global.bodyParser = require('body-parser');
 
+const MONGO_URI = `mongodb://localhost:27017/hp-assessment` || 'mongodb://address'
 
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -21,10 +20,11 @@ app.use(bodyParser.json({
   parameterLimit: 100000
 }))
 
-
 app.use(express.json()); 
 
-mongo.connect(dataURL)
+
+mongoose.connect(MONGO_URI)
+
 
 const userSchema = new mongoose.Schema( {
   username: String
@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema( {
 
 
 const User = mongoose.model('User', userSchema)
+
+
+const getUsernames = function() {
+  const query = User.find({ });
+  return query.exec();
+};
 
 
 app.post('/users', (req, res) => {
@@ -60,5 +66,5 @@ app.get('/users', (req, res) => {
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.listen(PORT, function() {
-  console.log(`listening on port  ${PORT}!`);
+  console.log(`listening on port ${PORT}`);
 });
