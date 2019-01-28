@@ -4,7 +4,7 @@ const app = express();
 var bodyParser = require('body-parser'); 
 var mongo = require("mongodb").MongoClient; 
 
-var dataURL = process.env.MONGOLAB_URI
+var dataURL = process.env.MONGO_URI
 
 const PORT = process.env.PORT || 3000;
 
