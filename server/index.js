@@ -4,7 +4,7 @@ const app = express();
 var bodyParser = require('body-parser'); 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 global.bodyParser = require('body-parser');
 
@@ -41,6 +41,7 @@ const getUsernames = function() {
 
 
 app.post('/users', (req, res) => {
+  console.log('hey')
   var newGuy = new User(req.body)
   newGuy.save()
   .then(item => {
@@ -53,6 +54,7 @@ app.post('/users', (req, res) => {
 
 
 app.get('/users', (req, res) => {
+  console.log('hey')
   User.find({ })
   .then((data) => {
     res.json(data);
