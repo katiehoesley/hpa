@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 const express = require('express');
 const app = express(); 
 var bodyParser = require('body-parser'); 
+require ('dotenv'); 
 
 
 console.log(process.env.PORT)
 const PORT = process.env.PORT || 3005;
 global.bodyParser = require('body-parser');
 
-const MONGO_URI = 'mongodb://address' 
+const MONGO_URI = `mongodb://${process.env.db_URL}@ds161495.mlab.com:61495/heroku_ztfzswdr` 
 //'mongodb://address' || 
 
 app.use(bodyParser.urlencoded({
