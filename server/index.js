@@ -4,8 +4,8 @@ const app = express();
 var bodyParser = require('body-parser'); 
 
 
+console.log(process.env.PORT)
 const PORT = process.env.PORT || 3005;
-
 global.bodyParser = require('body-parser');
 
 const MONGO_URI = 'mongodb://address' || `mongodb://localhost:27017/hp-assessment` 
