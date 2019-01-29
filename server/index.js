@@ -8,7 +8,8 @@ console.log(process.env.PORT)
 const PORT = process.env.PORT || 3005;
 global.bodyParser = require('body-parser');
 
-const MONGO_URI = `mongodb://localhost:27017/hp-assessment` 
+const MONGO_URI = 'mongodb://address' 
+//'mongodb://address' || 
 
 app.use(bodyParser.urlencoded({
   extended: true,
