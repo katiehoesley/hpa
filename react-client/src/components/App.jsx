@@ -137,6 +137,8 @@ class App extends React.Component {
       filteredData = this.state.data.sort((a, b) => a[sorter].localeCompare(b[sorter]))
     } else if (sorter === 'timestamp') {
       filteredData = this.state.data.sort((a, b) => new Date(a[sorter]) - new Date(b[sorter]))
+    } else {
+      filteredData = this.state.data;
     }
 
     this.setState({
