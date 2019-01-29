@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3005;
 
 global.bodyParser = require('body-parser');
 
-const MONGO_URI = `mongodb://localhost:27017/hp-assessment` || 'mongodb://address'
+const MONGO_URI = 'mongodb://address' || `mongodb://localhost:27017/hp-assessment` 
 
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -32,12 +32,6 @@ const userSchema = new mongoose.Schema( {
 
 
 const User = mongoose.model('User', userSchema)
-
-
-const getUsernames = function() {
-  const query = User.find({ });
-  return query.exec();
-};
 
 
 app.post('/users', (req, res) => {
