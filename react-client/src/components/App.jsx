@@ -72,9 +72,9 @@ class App extends React.Component {
         usersVisible: false
       })
     } else if ( this.state.usersVisible === false) {
-      this.setState({
-        usersVisible: true
-      })
+      // this.setState({
+      //   usersVisible: true
+      // })
       
       fetch(`/users`, {
         method: "GET", 
@@ -87,6 +87,7 @@ class App extends React.Component {
       .then((res) => {
         this.setState({
           loggedInUsers: res.map((el) => res.indexOf(el) !== res.length-1 ? `${el.username}, `: `${el.username}`),
+          usersVisible: true,
         });
       })
       .catch(err => console.log(err));
