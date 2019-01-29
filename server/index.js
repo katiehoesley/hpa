@@ -8,7 +8,7 @@ console.log(process.env.PORT)
 const PORT = process.env.PORT || 3005;
 global.bodyParser = require('body-parser');
 
-const MONGO_URI = 'mongodb://address' || `mongodb://localhost:27017/hp-assessment` 
+const MONGO_URI = `mongodb://localhost:27017/hp-assessment` 
 
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -35,7 +35,6 @@ const User = mongoose.model('User', userSchema)
 
 
 app.post('/users', (req, res) => {
-  console.log('hey')
   var newGuy = new User(req.body)
   newGuy.save()
   .then(item => {
