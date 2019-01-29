@@ -72,6 +72,10 @@ class App extends React.Component {
         usersVisible: false
       })
     } else if ( this.state.usersVisible === false) {
+      this.setState({
+        usersVisible: true
+      })
+      
       fetch(`/users`, {
         method: "GET", 
         body: JSON.stringify( ), 
