@@ -5,7 +5,7 @@ import PageChange from './PageChange.jsx'
 
 const AllProducts = ( props ) => {
 
-    const { pageNum, data, user, checkUsers, loggedInUsers, handleSort, nextPage, prevPage, selectProduct } = props; 
+    const { usersVisible, pageNum, data, user, checkUsers, loggedInUsers, handleSort, nextPage, prevPage, selectProduct } = props; 
 
     let three = data.slice( pageNum,  pageNum+25)
     
@@ -25,7 +25,7 @@ const AllProducts = ( props ) => {
 
     return (
         <div>
-            <WelcomeBar user={ user } checkUsers={ checkUsers } loggedInUsers={ loggedInUsers }/>
+            <WelcomeBar user={ user } checkUsers={ checkUsers } loggedInUsers={ loggedInUsers } usersVisible={ usersVisible }/>
             <SortBy handleSort={ handleSort } />
              <div className='full-page' >
                 { productData }

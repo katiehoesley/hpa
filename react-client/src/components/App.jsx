@@ -16,6 +16,7 @@ class App extends React.Component {
       selectedProduct: [], 
       sortedBy: '', 
       currImage: [],
+      usersVisible: false,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -66,23 +67,27 @@ class App extends React.Component {
 
   seeUsers(){ //GET ALL USERNAMES FROM THE DB
 
-    //fetch
-    fetch(`/users`, {
-      method: "GET", 
-      body: JSON.stringify( ), 
-      headers: {
-        'Content-Type':'application/json'
-      },
-    })
-    .then(res => res.json())
-    .then((res) => {
+    if( this.state.usersVisible === true ) {
       this.setState({
-        loggedInUsers: res.map((el) => res.indexOf(el) !== res.length-1 ? `${el.username}, `: `${el.username}`),
-      });
-    })
-    .catch(err => console.log(err));
+        usersVisible: false
+      })
+    } else if ( this.state.usersVisible === false) {
+      fetch(`/users`, {
+        method: "GET", 
+        body: JSON.stringify( ), 
+        headers: {
+          'Content-Type':'application/json'
+        },
+      })
+      .then(res => res.json())
+      .then((res) => {
+        this.setState({
+          loggedInUsers: res.map((el) => res.indexOf(el) !== res.length-1 ? `${el.username}, `: `${el.username}`),
+        });
+      })
+      .catch(err => console.log(err));
 
-
+    }
   }
    
 
@@ -156,7 +161,7 @@ class App extends React.Component {
       if (isLoggedIn && this.state.selectedProduct.length > 0) {
         currentPage = <Product product={this.state.selectedProduct} returnToMain={this.returnToMain}/>
       } else if (isLoggedIn) {
-        currentPage = <AllProducts handleSort={this.handleSort} nextPage={this.nextPage} pageNum={this.state.pageNum} 
+        currentPage = <AllProducts usersVisible={this.state.usersVisible} handleSort={this.handleSort} nextPage={this.nextPage} pageNum={this.state.pageNum} 
               prevPage={this.previousPage} data={this.state.data} user={this.state.currentUser} checkUsers={this.seeUsers} 
               selectProduct={this.selectProduct} nextPage={this.nextPage}  loggedInUsers={ this.state.loggedInUsers }
           /> 
