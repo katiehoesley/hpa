@@ -9,7 +9,7 @@ console.log(process.env.PORT)
 const PORT = process.env.PORT || 3005;
 global.bodyParser = require('body-parser');
 
-const MONGO_URI = `mongodb://${process.env.db_URL}@ds161495.mlab.com:61495/heroku_ztfzswdr` 
+// const MONGO_URI = `mongodb://${process.env.db_URL}@ds161495.mlab.com:61495/heroku_ztfzswdr` 
 //'mongodb://address' || 
 
 app.use(bodyParser.urlencoded({
@@ -25,7 +25,7 @@ app.use(bodyParser.json({
 app.use(express.json()); 
 
 
-mongoose.connect(MONGO_URI)
+mongoose.connect(process.env.MONGODB_URI)
 
 
 const userSchema = new mongoose.Schema( {
